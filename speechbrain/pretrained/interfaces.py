@@ -372,26 +372,26 @@ class Pretrained(torch.nn.Module):
             use_auth_token=use_auth_token,
             revision=revision,
         )
-        try:
-            pymodule_local_path = fetch(
-                filename=pymodule_file,
-                source=source,
-                savedir=savedir,
-                overwrite=False,
-                save_filename=None,
-                use_auth_token=use_auth_token,
-                revision=revision,
-            )
-            sys.path.append(str(pymodule_local_path.parent))
-        except ValueError:
-            if pymodule_file == "custom.py":
-                # The optional custom Python module file did not exist
-                # and had the default name
-                pass
-            else:
-                # Custom Python module file not found, but some other
-                # filename than the default was given.
-                raise
+#         try:
+#             pymodule_local_path = fetch(
+#                 filename=pymodule_file,
+#                 source=source,
+#                 savedir=savedir,
+#                 overwrite=False,
+#                 save_filename=None,
+#                 use_auth_token=use_auth_token,
+#                 revision=revision,
+#             )
+#             sys.path.append(str(pymodule_local_path.parent))
+#         except ValueError:
+#             if pymodule_file == "custom.py":
+#                 # The optional custom Python module file did not exist
+#                 # and had the default name
+#                 pass
+#             else:
+#                 # Custom Python module file not found, but some other
+#                 # filename than the default was given.
+#                 raise
 
         # Load the modules:
         with open(hparams_local_path) as fin:
